@@ -11,63 +11,63 @@ const Sidebar = ({ step }) => {
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
-              step === 0 ? "bg-light-blue" : ""
+              step === 0 ? "bg-light-blue text-black" : ""
             }`}
           >
             1
           </span>
-          <p>
+          <span>
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 1
             </h6>
             <h3>YOUR INFO</h3>
-          </p>
+          </span>
         </li>
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
-              step === 1 ? "bg-light-blue" : ""
+              step === 1 ? "bg-light-blue text-black" : ""
             }`}
           >
             2
           </span>
-          <p>
+          <span>
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 2
             </h6>
             <h3>SELECT PLAN</h3>
-          </p>
+          </span>
         </li>
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
-              step === 2 ? "bg-light-blue" : ""
+              step === 2 ? "bg-light-blue text-black " : ""
             }`}
           >
             3
           </span>
 
-          <p>
+          <span>
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 3
             </h6>
             <h3>ADD-ONS</h3>
-          </p>
+          </span>
         </li>
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
-              step === 3 ? "bg-light-blue" : ""
+              step === 3 ? "bg-light-blue text-black" : ""
             }`}
           >
             4
           </span>
-          <p>
+          <span>
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 4
             </h6>
             <h3>SUMMARY</h3>
-          </p>
+          </span>
         </li>
       </ul>
     </div>

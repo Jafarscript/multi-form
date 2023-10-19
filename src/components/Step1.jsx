@@ -15,7 +15,7 @@ const Step1 = ({step, setStep}) => {
           <input
             type="text"
             placeholder="e.g.Taoheed Bald"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg"
+            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
           />
         </label>
         <label>
@@ -23,7 +23,7 @@ const Step1 = ({step, setStep}) => {
           <input
             type="email"
             placeholder="e.g.taoheedisbald@baldee.com"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg"
+            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
           />
         </label>
         <label>
@@ -31,7 +31,7 @@ const Step1 = ({step, setStep}) => {
           <input
             type="tel"
             placeholder="e.g+ 1 234 4567 890"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg"
+            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
           />
         </label>
       </section>
