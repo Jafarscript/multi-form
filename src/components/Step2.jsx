@@ -32,19 +32,19 @@ const Step2 = ({ setStep, step }) => {
           <div className="flex flex-col  flex-1 p-3 border  rounded-md">
             <p className="w-10 h-10" style={{backgroundImage: `url(${arcade})`}}></p>
             <h5 className="mt-11 text-marine-blue">Arcade</h5>
-            <h6 className="text-cool-gray">{change ? '$9/mo' : '$90/yr'}</h6>
+            <h6 className="text-cool-gray mb-1">{change ? '$9/mo' : '$90/yr'}</h6>
             {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
           </div>
           <div className="flex flex-col  flex-1 p-3 border  rounded-md" >
             <p className="w-10 h-10" style={{backgroundImage: `url(${advanced})`}}></p>
             <h5 className="mt-11 text-marine-blue">Advanced</h5>
-            <h6 className="text-cool-gray">{change ? '$12/mo' : '$120/yr'}</h6>
+            <h6 className="text-cool-gray mb-1">{change ? '$12/mo' : '$120/yr'}</h6>
             {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
           </div>
           <div className="flex flex-col  flex-1 p-3 border  rounded-md">
             <p className="w-10 h-10" style={{backgroundImage: `url(${pro})`}}></p>
             <h5 className="mt-11 text-marine-blue">Pro</h5>
-            <h6 className="text-cool-gray">{change ? '$15/mo' : '$150/yr'}</h6>
+            <h6 className="text-cool-gray mb-1">{change ? '$15/mo' : '$150/yr'}</h6>
             {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
           </div>
         </div>
