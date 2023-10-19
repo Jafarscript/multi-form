@@ -54,7 +54,7 @@ const Step2 = ({ setStep, step }) => {
           Yearly
         </div>
       </section>
-      <div className="flex w-full justify-between flex-row pt-28 pb-5">
+      <div className="flex w-full justify-between flex-row mt-40 mb-5">
         <button
           className="px-8 py-3  text-cool-gray rounded-lg cursor-pointer"
           onClick={() => setStep(step - 1)}

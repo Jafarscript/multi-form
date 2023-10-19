@@ -35,7 +35,7 @@ const Step1 = ({step, setStep}) => {
           />
         </label>
       </section>
-      <div className="flex w-full flex-col pt-28 pb-5">
+      <div className="flex w-full flex-col mt-28 mb-5">
         <button className="self-end px-8 py-3 bg-marine-blue text-lol-white rounded-lg" onClick={() => setStep(step + 1)}>
             Next Step
         </button>
