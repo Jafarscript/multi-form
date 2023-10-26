@@ -1,38 +1,48 @@
 import React, {useState} from "react";
 
 const Step1 = ({step, setStep,data,setData}) => {
-  // const [valid, setValid] = useState(true);
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  const nextPage = () =>{
+  const nextPage = () => {
+    let isDataValid = true;
+
     if (!data.name) {
       setNameError('Please fill in the Name field.');
-    } else if (!/^[A-Za-z\s]+$/.test(data.name)) {
+      isDataValid = false;
+    } else if (!/^[A-Za-z\s\-]+$/.test(data.name)) {
       setNameError('Name should only contain letters and spaces.');
+      isDataValid = false;
     } else {
       setNameError('');
     }
+  
     if (!data.phone) {
       setPhoneError('Please fill in the Phone field.');
+      isDataValid = false;
     } else if (!/^[0-9+\s]+$/.test(data.phone)) {
-      setPhoneError('Phone should only contain numbers and the plus sign (+).');
+      setPhoneError('Invalid phone number');
+      isDataValid = false;
     } else {
       setPhoneError('');
     }
-
+  
     if (!data.email) {
       setEmailError('Please fill in the Email field.');
-    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(data.email)){
+      isDataValid = false;
+    } else if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(data.email)) {
       setEmailError('Please enter a valid email address.');
+      isDataValid = false;
     } else {
       setEmailError('');
     }
-    if (data.email && data.name && data.phone) {
-      setStep(step + 1)
+  
+    if (isDataValid) {
+      setStep(step + 1);
     }
   }
+  
   return (
     <div>
       <h1 className="font-extrabold text-marine-blue text-3xl">
@@ -57,7 +67,6 @@ const Step1 = ({step, setStep,data,setData}) => {
         <label>
           <div className="flex justify-between items-center">
           <h6 className="text-marine-blue text-sm mb-1">Email Address</h6>
-          {/* {!valid && <h6 className="text-red-600 font-medium">Invalid Email</h6>} */}
           {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
           </div>
           <input
