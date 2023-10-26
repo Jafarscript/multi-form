@@ -5,15 +5,49 @@ import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Summary from "./components/Summary";
+import arcade from "./assets/images/icon-arcade.svg";
+import advanced from "./assets/images/icon-advanced.svg";
+import pro from "./assets/images/icon-pro.svg";
+
 
 function App() {
+  const [data, setData] = useState(
+    {
+      name : '',
+      email: '',
+      phone: '',
+      plan: [
+        {
+          id : 1,
+          planName: 'arcade',
+          monthly: '$9/mo',
+          yearly: '$90/yr',
+          icon: arcade
+        },
+        {
+          id : 2,
+          planName: 'advanced',
+          monthly: '$12/mo',
+          yearly: '$120/yr',
+          icon: advanced,
+        },
+        {
+          id : 3,
+          planName: 'pro',
+          monthly: '$15/mo',
+          yearly: '$150/yr',
+          icon: pro
+        }
+      ]
+    }
+  )
   const [step, setStep] = useState(0)
   const conditionalComponent = () => {
     switch (step) {
       case 0 :
-        return <Step1 setStep={setStep} step={step} />;
+        return <Step1 setStep={setStep} step={step} data={data} setData={setData}/>;
       case 1 :
-        return <Step2 setStep={setStep} step={step}/>;
+        return <Step2 setStep={setStep} step={step} data={data} setData={setData}/>;
       case 2 :
         return <Step3 setStep={setStep} step={step}/>;
       case 3 :
