@@ -1,21 +1,10 @@
 import React, {useState} from "react";
 
 const Step1 = ({step, setStep,data,setData}) => {
-  const [valid, setValid] = useState(true);
+  // const [valid, setValid] = useState(true);
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
-
-  const validateEmail = (email) => {
-    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    console.log(regex.test(email))
-    return regex.test(email);
-  };
-
-  const handleInputChange = (e) => {
-    const inputEmail = e.target.value;
-      setData({...data, email: inputEmail})
-      setValid(validateEmail(inputEmail));
-  };
+  const [emailError, setEmailError] = useState('');
 
   const nextPage = () =>{
     if (!data.name) {
@@ -24,6 +13,21 @@ const Step1 = ({step, setStep,data,setData}) => {
       setNameError('Name should only contain letters and spaces.');
     } else {
       setNameError('');
+    }
+    if (!data.phone) {
+      setPhoneError('Please fill in the Phone field.');
+    } else if (!/^[0-9+\s]+$/.test(data.phone)) {
+      setPhoneError('Phone should only contain numbers and the plus sign (+).');
+    } else {
+      setPhoneError('');
+    }
+
+    if (!data.email) {
+      setEmailError('Please fill in the Email field.');
+    }else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(data.email)){
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
     }
     if (data.email && data.name && data.phone) {
       setStep(step + 1)
@@ -46,31 +50,33 @@ const Step1 = ({step, setStep,data,setData}) => {
           <input
             type="text"
             placeholder="e.g.Taoheed Bald"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
+            className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${nameError && 'border-red-600' }`}
             onChange={(e) => setData({...data, name: e.target.value})}
           />
         </label>
         <label>
           <div className="flex justify-between items-center">
           <h6 className="text-marine-blue text-sm mb-1">Email Address</h6>
-          {!valid && <h6 className="text-red-600 font-medium">Invalid Email</h6>}
+          {/* {!valid && <h6 className="text-red-600 font-medium">Invalid Email</h6>} */}
+          {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
           </div>
           <input
             type="email"
             placeholder="e.g.taoheedisbald@baldee.com"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
-            onChange={handleInputChange}
+            className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${emailError && 'border-red-600' }`}
+            onChange={(e) => setData({...data, email: e.target.value})}
           />
         </label>
         <label>
           <div className="flex justify-between">
           <h6 className="text-marine-blue text-sm mb-1">Phone Number</h6>
-          {/* {!valid && <h6>Invalid Email</h6>} */}
+          {phoneError && <p className="text-red-600 font-medium">{phoneError}</p>}
           </div>
           <input
             type="tel"
             placeholder="e.g+ 1 234 4567 890"
-            className="border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue"
+            className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${phoneError && 'border-red-600' }`}
+            onChange={(e) => setData({...data, phone: e.target.value})}
           />
         </label>
       </section>
