@@ -1,24 +1,27 @@
-import React, { useState } from "react";
-import arcade from "../assets/images/icon-arcade.svg";
-import advanced from "../assets/images/icon-advanced.svg";
-import pro from "../assets/images/icon-pro.svg";
+import React, { useEffect, useState } from "react";
 
+const Step2 = ({ setStep, step, data, setData }) => {
+  const [change, setChange] = useState("monthly");
+  const [selected, setSelected] = useState(0);
 
-const Step2 = ({ setStep, step }) => {
-  const [change, setChange] = useState(true);
+  useEffect(() => {
+    // Update the "prefer" field in the selected state based on the "change" value
+    setSelected((prevSelected) => ({
+      ...prevSelected,
+      prefer: change === "monthly" ? prevSelected.monthly : prevSelected.yearly,
+    }));
+  }, [change, setSelected]);
+
+  console.log(selected);
 
   const handleClick = () => {
-    setChange(!change)
-   
-    // if(change === 'monthly'){
-    //   setChange('yearly')
-    //   console.log(change)
-    // }else{
-    //   setChange('monthly')
-    //   console.log(change)
-    // }
+    if (change === "monthly") {
+      setChange("yearly");
+    } else {
+      setChange("monthly");
+    }
+  };
 
-  }
   return (
     <div>
       <h1 className="font-extrabold text-marine-blue text-3xl">
@@ -29,39 +32,60 @@ const Step2 = ({ setStep, step }) => {
       </h3>
       <section className="flex flex-col mt-14 gap-10">
         <div className="flex gap-5 w-[56vh]">
-          <div className="flex flex-col  flex-1 p-3 border  rounded-md">
-            <p className="w-10 h-10" style={{backgroundImage: `url(${arcade})`}}></p>
-            <h5 className="mt-11 text-marine-blue">Arcade</h5>
-            <h6 className="text-cool-gray mb-1">{change ? '$9/mo' : '$90/yr'}</h6>
-            {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
-          </div>
-          <div className="flex flex-col  flex-1 p-3 border  rounded-md" >
-            <p className="w-10 h-10" style={{backgroundImage: `url(${advanced})`}}></p>
-            <h5 className="mt-11 text-marine-blue">Advanced</h5>
-            <h6 className="text-cool-gray mb-1">{change ? '$12/mo' : '$120/yr'}</h6>
-            {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
-          </div>
-          <div className="flex flex-col  flex-1 p-3 border  rounded-md">
-            <p className="w-10 h-10" style={{backgroundImage: `url(${pro})`}}></p>
-            <h5 className="mt-11 text-marine-blue">Pro</h5>
-            <h6 className="text-cool-gray mb-1">{change ? '$15/mo' : '$150/yr'}</h6>
-            {change ? "" : <h6 className="text-marine-blue text-[12px]">2 months free</h6>}
-          </div>
+          {data.plan.map((plan) => (
+            <div
+              className={`flex flex-col  flex-1 p-3 border-2  rounded-md hover:border-pastel-blue ${
+                selected && selected.id === plan.id ? "border-pastel-blue" : ""
+              }`}
+              key={plan.id}
+              onClick={() =>
+                setSelected({
+                  ...plan,
+                  prefer: change === "monthly" ? plan.monthly : plan.yearly,
+                })
+              }
+            >
+              <p
+                className="w-10 h-10"
+                style={{ backgroundImage: `url(${plan.icon})` }}
+              ></p>
+              <h5 className="mt-11 text-marine-blue capitalize">
+                {plan.planName}
+              </h5>
+              <h6 className="text-cool-gray mb-1">
+                ${change ? plan.monthly + `${"/mo"}` : plan.yearly + `${"/yr"}`}
+              </h6>
+              {change ? (
+                ""
+              ) : (
+                <h6 className="text-marine-blue text-[12px]">2 months free</h6>
+              )}
+            </div>
+          ))}
         </div>
         <div className="bg-light-gray w-full flex justify-center gap-3 py-3 rounded-lg items-center">
           Monthly
-          <div className={`w-9 h-5 px-[2px] bg-marine-blue rounded-xl flex items-center cursor-pointer ${change ? 'only:justify-start' : 'justify-end'} transition-all`} onClick={() => handleClick()}><p className="w-4 h-4 bg-lol-white rounded-lg transition-all"></p></div>
+          <div
+            className={`w-9 h-5 px-[2px] bg-marine-blue rounded-xl flex items-center cursor-pointer ${
+              change === "monthly" ? "only:justify-start" : "justify-end"
+            } transition-all`}
+            onClick={() => handleClick()}
+          >
+            <p className="w-4 h-4 bg-lol-white rounded-lg transition-all"></p>
+          </div>
           Yearly
         </div>
       </section>
       <div className="flex w-full justify-between flex-row mt-40 mb-5">
         <button
+          type="button"
           className="px-8 py-3  text-cool-gray rounded-lg cursor-pointer"
           onClick={() => setStep(step - 1)}
         >
           Go Back
         </button>
         <button
+          type="button"
           className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
           onClick={() => setStep(step + 1)}
         >

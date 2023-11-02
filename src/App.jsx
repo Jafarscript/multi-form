@@ -20,22 +20,25 @@ function App() {
         {
           id : 1,
           planName: 'arcade',
-          monthly: '$9/mo',
-          yearly: '$90/yr',
+          monthly: 9,
+          yearly: 90,
+          prefer: '',
           icon: arcade
         },
         {
           id : 2,
           planName: 'advanced',
-          monthly: '$12/mo',
-          yearly: '$120/yr',
+          monthly: 12,
+          yearly: 120,
+          prefer: '',
           icon: advanced,
         },
         {
           id : 3,
           planName: 'pro',
-          monthly: '$15/mo',
-          yearly: '$150/yr',
+          monthly: 15,
+          yearly: 150,
+          prefer: '',
           icon: pro
         }
       ]
