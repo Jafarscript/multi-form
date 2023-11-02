@@ -41,7 +41,8 @@ function App() {
           prefer: '',
           icon: pro
         }
-      ]
+      ],
+      select: ""
     }
   )
   const [step, setStep] = useState(0)

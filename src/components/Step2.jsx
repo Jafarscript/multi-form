@@ -12,15 +12,26 @@ const Step2 = ({ setStep, step, data, setData }) => {
     }));
   }, [change, setSelected]);
 
-  console.log(selected);
+  // console.log(selected);
 
-  const handleClick = () => {
+  const tooglePlan = () => {
     if (change === "monthly") {
       setChange("yearly");
     } else {
       setChange("monthly");
     }
   };
+
+  const nextPage = () => {
+    setStep(step + 1)
+    // setData({...data, select: selected})
+    // if(data.select){
+    //   console.log(data)
+    //   // setStep(step++)
+    // }else{
+    //   console.log('wrong')
+    // }
+  }
 
   return (
     <div>
@@ -39,10 +50,10 @@ const Step2 = ({ setStep, step, data, setData }) => {
               }`}
               key={plan.id}
               onClick={() =>
-                setSelected({
-                  ...plan,
-                  prefer: change === "monthly" ? plan.monthly : plan.yearly,
-                })
+                  setSelected({
+                    ...plan,
+                    prefer: change === "monthly" ? plan.monthly : plan.yearly,
+                  })
               }
             >
               <p
@@ -69,7 +80,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
             className={`w-9 h-5 px-[2px] bg-marine-blue rounded-xl flex items-center cursor-pointer ${
               change === "monthly" ? "only:justify-start" : "justify-end"
             } transition-all`}
-            onClick={() => handleClick()}
+            onClick={() => tooglePlan()}
           >
             <p className="w-4 h-4 bg-lol-white rounded-lg transition-all"></p>
           </div>
@@ -86,8 +97,8 @@ const Step2 = ({ setStep, step, data, setData }) => {
         </button>
         <button
           type="button"
-          className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
-          onClick={() => setStep(step + 1)}
+          className=" px-8 py-3 bg-purplish-blue text-lol-white rounded-lg cursor-pointer"
+          onClick={nextPage}
         >
           Next Step
         </button>

@@ -11,7 +11,7 @@ const Step1 = ({step, setStep,data,setData}) => {
     if (!data.name) {
       setNameError('Please fill in the Name field.');
       isDataValid = false;
-    } else if (!/^[A-Za-z\s\-]+$/.test(data.name)) {
+    } else if (!/^[A-Za-z\s-]+$/.test(data.name)) {
       setNameError('Name should only contain letters and spaces.');
       isDataValid = false;
     } else {
@@ -90,7 +90,7 @@ const Step1 = ({step, setStep,data,setData}) => {
         </label>
       </section>
       <div className="flex w-full flex-col mt-28 mb-5">
-        <button type='button' className="self-end px-8 py-3 bg-marine-blue text-lol-white rounded-lg" onClick={nextPage}>
+        <button type='button' className="self-end px-8 py-3 bg-purplish-blue text-lol-white rounded-lg" onClick={nextPage}>
             Next Step
         </button>
       </div>
