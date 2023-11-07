@@ -34,14 +34,15 @@ const Step2 = ({ setStep, step, data, setData }) => {
   }
 
   return (
-    <div>
+    <div className="h-[100%] flex flex-col justify-between">
+      <main>
       <h1 className="font-extrabold text-marine-blue text-3xl">
         Select your plan
       </h1>
       <h3 className="font-thin text-cool-gray">
         You have the option of monthly or yearly billing
       </h3>
-      <section className="flex flex-col mt-14 gap-10">
+      <section className="flex flex-col mt-10 gap-10">
         <div className="flex gap-5 w-[56vh]">
           {data.plan.map((plan) => (
             <div
@@ -87,17 +88,18 @@ const Step2 = ({ setStep, step, data, setData }) => {
           Yearly
         </div>
       </section>
-      <div className="flex w-full justify-between flex-row mt-40 mb-5">
+      </main>
+      <div className="flex w-full justify-between flex-row mb-5">
         <button
           type="button"
-          className="px-8 py-3  text-cool-gray rounded-lg cursor-pointer"
+          className="  text-cool-gray rounded-lg cursor-pointer"
           onClick={() => setStep(step - 1)}
         >
           Go Back
         </button>
         <button
           type="button"
-          className=" px-8 py-3 bg-purplish-blue text-lol-white rounded-lg cursor-pointer"
+          className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
           onClick={nextPage}
         >
           Next Step

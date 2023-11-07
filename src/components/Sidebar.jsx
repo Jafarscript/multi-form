@@ -4,7 +4,7 @@ import sidebarBG from "../assets/images/bg-sidebar-desktop.svg";
 const Sidebar = ({ step }) => {
   return (
     <div
-      className="pt-10 bg-no-repeat bg-cover bg-left-bottom  rounded-xl"
+      className="pt-10 bg-no-repeat bg-cover bg-left-bottom  rounded-xl min-h-[80vh]"
       style={{ backgroundImage: `url(${sidebarBG})` }}
     >
       <ul className="text-lol-white flex gap-5 flex-col pl-10 pr-32">
