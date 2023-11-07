@@ -92,7 +92,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
       <div className="flex w-full justify-between flex-row mb-5">
         <button
           type="button"
-          className="  text-cool-gray rounded-lg cursor-pointer"
+          className="  text-cool-gray rounded-lg hover:text-marine-blue cursor-pointer"
           onClick={() => setStep(step - 1)}
         >
           Go Back
