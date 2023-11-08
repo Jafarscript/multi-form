@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Step3 = ({ step, setStep }) => {
   const [checkedItems, setCheckedItems] = useState({});
-  const [addon, setAddon] = useState([
+  const addon =[
     {
       id: 0,
       name: "Online Service",
@@ -21,7 +21,7 @@ const Step3 = ({ step, setStep }) => {
       detail: "Custom theme on your profile",
       price: 2,
     },
-  ]);
+  ];
 
   const handleCheckboxChange = (id) => {
     setCheckedItems((prevCheckedItems) => ({
@@ -78,12 +78,14 @@ const Step3 = ({ step, setStep }) => {
         <button
           className="text-cool-gray hover:text-marine-blue cursor-pointer"
           onClick={() => setStep(step - 1)}
+          type='button'
         >
           Go Back
         </button>
         <button
           className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
           onClick={() => setStep(step + 1)}
+          type='button'
         >
           Next Step
         </button>

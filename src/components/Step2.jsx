@@ -23,6 +23,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
   };
 
   const nextPage = () => {
+
     setStep(step + 1)
     // setData({...data, select: selected})
     // if(data.select){
@@ -75,7 +76,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
             </div>
           ))}
         </div>
-        <div className="bg-light-gray w-full flex justify-center gap-3 py-3 rounded-lg items-center">
+        <div className="bg-gray-100 w-full flex justify-center gap-3 py-3 rounded-lg items-center">
           Monthly
           <div
             className={`w-9 h-5 px-[2px] bg-marine-blue rounded-xl flex items-center cursor-pointer ${
