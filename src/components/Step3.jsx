@@ -33,7 +33,7 @@ const Step3 = ({ step, setStep }) => {
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
-      <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-7rem] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5">
+      <main className="bg-lol-white p-6 lg:p-0 rounded-xl translate-y-[-12%] lg:rounded-none sm:translate-y-[-20%] md:translate-y-[-35%] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5">
         <h1 className="font-extrabold text-marine-blue lg:text-3xl text-2xl">
           Pick add-ons
         </h1>
@@ -51,7 +51,7 @@ const Step3 = ({ step, setStep }) => {
                   : "border-gray-300"
               }`}
             >
-              <div className="flex items-center gap-7">
+              <div className="flex items-center lg:gap-7 gap-3">
                 <input
                   type="checkbox"
                   id={`checkbox_${add.id}`}
@@ -60,8 +60,8 @@ const Step3 = ({ step, setStep }) => {
                   checked={checkedItems[add.id]}
                 />
                 <div>
-                  <h4 className="text-marine-blue font-medium">{add.name}</h4>
-                  <h6 className="text-cool-gray font-thin text-sm">
+                  <h4 className="text-marine-blue text-sm font-medium">{add.name}</h4>
+                  <h6 className="text-cool-gray font-thin text-[12.5px]">
                     {add.detail}
                   </h6>
                 </div>

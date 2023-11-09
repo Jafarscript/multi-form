@@ -4,7 +4,7 @@ import React from "react";
 const Sidebar = ({ step }) => {
   return (
     <div
-      className="pt-10  w-full lg:w-[36vh] h-[20vh] lg:h-auto bg-no-repeat bg-cover bg-bottom lg:bg-left-bottom rounded-none sidebar"
+      className="pt-10  w-full lg:w-[36vh] h-[20vh] lg:h-auto bg-no-repeat bg-cover bg-bottom lg:bg-left-bottom rounded-none lg:rounded-xl sidebar"
     >
       <ul className="text-lol-white flex gap-5 lg:flex-col justify-center lg:justify-stretch lg:pl-10">
         <li className="flex gap-5 items-center">

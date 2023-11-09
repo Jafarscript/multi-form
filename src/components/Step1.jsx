@@ -47,7 +47,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
-      <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-7rem] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5 ">
+      <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-12%] sm:translate-y-[-20%] md:translate-y-[-35%] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5 ">
         <h1 className="font-extrabold text-marine-blue lg:text-3xl text-2xl">
           Personal Info
         </h1>

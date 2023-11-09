@@ -42,7 +42,7 @@ function App() {
     ],
     select: "",
   });
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(0);
   const conditionalComponent = () => {
     switch (step) {
       case 0:
