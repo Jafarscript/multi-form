@@ -3,14 +3,14 @@ import React from "react";
 const Summary = ({ step, setStep }) => {
   return (
     <div className="h-[100%] flex flex-col justify-between">
-      <main>
-        <h1 className="font-extrabold text-marine-blue text-3xl">
+      <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-20%] md:translate-y-[-35%] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5">
+        <h1 className="font-extrabold text-marine-blue lg:text-3xl text-2xl">
           Finishing Up
         </h1>
         <h3 className="font-thin text-cool-gray">
           Double-check everything looks OK before confirming.
         </h3>
-        <section className="flex flex-col  w-[56vh] mt-10">
+        <section className="flex flex-col  mt-10">
           <div className="bg-gray-100 p-5 gap-4 flex flex-col rounded-lg">
             <div className="flex items-center justify-between">
               <h4 className="flex flex-col items-start text-marine-blue text-sm font-bold">
@@ -43,9 +43,9 @@ const Summary = ({ step, setStep }) => {
           </div>
         </section>
       </main>
-      <div className="flex w-full flex-row  pb-5 self-end justify-between">
+      <div className="flex w-full flex-row  self-end justify-between lg:p-0 p-5 bg-lol-white lg:bg-none">
         <button
-          className="px-8 py-3  text-cool-gray rounded-lg hover:text-marine-blue cursor-pointer"
+          className=" text-cool-gray rounded-lg hover:text-marine-blue cursor-pointer"
           onClick={() => setStep(step - 1)}
           type="button"
         >

@@ -1,13 +1,12 @@
 import React from "react";
-import sidebarBG from "../assets/images/bg-sidebar-desktop.svg";
+// import sidebarBG from "../assets/images/bg-sidebar-desktop.svg";
 
 const Sidebar = ({ step }) => {
   return (
     <div
-      className="pt-10 bg-no-repeat bg-cover bg-left-bottom  rounded-xl min-h-[80vh]"
-      style={{ backgroundImage: `url(${sidebarBG})` }}
+      className="pt-10  w-full lg:w-[36vh] h-[20vh] lg:h-auto bg-no-repeat bg-cover bg-bottom lg:bg-left-bottom rounded-none sidebar"
     >
-      <ul className="text-lol-white flex gap-5 flex-col pl-10 pr-32">
+      <ul className="text-lol-white flex gap-5 lg:flex-col justify-center lg:justify-stretch lg:pl-10">
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
@@ -16,7 +15,7 @@ const Sidebar = ({ step }) => {
           >
             1
           </span>
-          <span>
+          <span className="lg:block hidden">
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 1
             </h6>
@@ -31,7 +30,7 @@ const Sidebar = ({ step }) => {
           >
             2
           </span>
-          <span>
+          <span className="lg:block hidden">
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 2
             </h6>
@@ -47,7 +46,7 @@ const Sidebar = ({ step }) => {
             3
           </span>
 
-          <span>
+          <span className="lg:block hidden">
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 3
             </h6>
@@ -62,7 +61,7 @@ const Sidebar = ({ step }) => {
           >
             4
           </span>
-          <span>
+          <span className="lg:block hidden">
             <h6 className="text-light-gray font-[100] text-sm uppercase">
               Step 4
             </h6>

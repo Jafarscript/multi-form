@@ -1,3 +1,15 @@
 * {
     font-family:  Ubuntu;
 }
+
+
+
+.sidebar{
+    background-image: url('./assets/images/bg-sidebar-mobile.svg');
+}
+
+@media(min-width:1024px){
+    .sidebar{
+        background-image: url('./assets/images/bg-sidebar-desktop.svg');
+    }
+}

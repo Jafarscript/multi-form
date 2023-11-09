@@ -33,14 +33,14 @@ const Step3 = ({ step, setStep }) => {
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
-      <main>
-        <h1 className="font-extrabold text-marine-blue text-3xl">
+      <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-7rem] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5">
+        <h1 className="font-extrabold text-marine-blue lg:text-3xl text-2xl">
           Pick add-ons
         </h1>
         <h3 className="font-thin text-cool-gray">
           Add-ons helps enhance your gaming experience
         </h3>
-        <section className="flex flex-col gap-6 w-[56vh] mt-10">
+        <section className="flex flex-col gap-4 mt-10">
           {addon.map((add) => (
             <label
               htmlFor={`checkbox_${add.id}`}
@@ -74,7 +74,7 @@ const Step3 = ({ step, setStep }) => {
         </section>
       </main>
 
-      <div className="flex w-full flex-row  mb-5 justify-between self-end">
+      <div className="flex w-full flex-row  justify-between self-end lg:p-0 p-5 bg-lol-white lg:bg-none">
         <button
           className="text-cool-gray hover:text-marine-blue cursor-pointer"
           onClick={() => setStep(step - 1)}

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
@@ -14,6 +15,9 @@ module.exports = {
         'pastel-blue':'hsl(228, 100%, 84%)',
         'light-blue':'hsl(206, 94%, 87%)',
         'strawberry-red':'hsl(354, 84%, 57%)',
+      },
+      gridTemplateColumns: {
+        'main': '1fr 1fr 2.5fr'
       },
     },
   },
