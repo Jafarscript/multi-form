@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 
 const Step2 = ({ setStep, step, data, setData }) => {
   const [change, setChange] = useState("monthly");
-  const [selected, setSelected] = useState(0);
+  const [planError, setPlanError] = useState("");
 
   useEffect(() => {
     // Update the "prefer" field in the selected state based on the "change" value
-    setSelected((prevSelected) => ({
+    setData((prevSelected) => ({
       ...prevSelected,
-      prefer: change === "monthly" ? prevSelected.monthly : prevSelected.yearly,
+      prefer: change === "monthly" ? 'monthly' : 'yearly',
     }));
-  }, [change, setSelected]);
+  }, [change, setData]);
 
-  // console.log(selected);
 
   const tooglePlan = () => {
     if (change === "monthly") {
@@ -23,15 +22,14 @@ const Step2 = ({ setStep, step, data, setData }) => {
   };
 
   const nextPage = () => {
-    setStep(step + 1);
-    // setData({...data, select: selected})
-    // if(data.select){
-    //   console.log(data)
-    //   // setStep(step++)
-    // }else{
-    //   console.log('wrong')
-    // }
+    if(!data.selected){
+      setPlanError('Please select a plan')
+    }else{
+      setStep(step + 1);
+    }
   };
+
+  console.log(data)
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
@@ -42,20 +40,21 @@ const Step2 = ({ setStep, step, data, setData }) => {
         <h3 className="font-thin text-cool-gray">
           You have the option of monthly or yearly billing
         </h3>
+        {planError && <p className="text-red-600 font-medium">{planError}</p>}
         <section className="flex flex-col mt-10 gap-10">
           <div className="flex gap-5 flex-col lg:flex-row">
             {data.plan.map((plan) => (
               <div
                 className={`flex flex-row gap-4 lg:flex-col  flex-1 p-3 border-2  rounded-md hover:border-pastel-blue ${
-                  selected && selected.id === plan.id
+                  data.selected && data.selected.id === plan.id
                     ? "border-pastel-blue"
                     : ""
                 }`}
                 key={plan.id}
                 onClick={() =>
-                  setSelected({
-                    ...plan,
-                    prefer: change === "monthly" ? plan.monthly : plan.yearly,
+                  setData({
+                    ...data,
+                    selected: plan
                   })
                 }
               >
@@ -69,11 +68,11 @@ const Step2 = ({ setStep, step, data, setData }) => {
                   </h5>
                   <h6 className="text-cool-gray mb-1">
                     $
-                    {change
+                    {data.prefer === "monthly"
                       ? plan.monthly + `${"/mo"}`
                       : plan.yearly + `${"/yr"}`}
                   </h6>
-                  {change === "monthly" ? (
+                  {data.prefer === "monthly" ? (
                     ""
                   ) : (
                     <h6 className="text-marine-blue text-[12px]">
@@ -108,7 +107,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
         </button>
         <button
           type="button"
-          className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
+          className=" py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer"
           onClick={nextPage}
         >
           Next Step

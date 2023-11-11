@@ -20,7 +20,6 @@ function App() {
         planName: "arcade",
         monthly: 9,
         yearly: 90,
-        prefer: "",
         icon: arcade,
       },
       {
@@ -28,7 +27,6 @@ function App() {
         planName: "advanced",
         monthly: 12,
         yearly: 120,
-        prefer: "",
         icon: advanced,
       },
       {
@@ -36,11 +34,11 @@ function App() {
         planName: "pro",
         monthly: 15,
         yearly: 150,
-        prefer: "",
         icon: pro,
       },
     ],
-    select: "",
+    prefer: "monthly",
+    selected: '',
   });
   const [step, setStep] = useState(0);
   const conditionalComponent = () => {
@@ -56,7 +54,7 @@ function App() {
       case 2:
         return <Step3 setStep={setStep} step={step} />;
       case 3:
-        return <Summary setStep={setStep} step={step} />;
+        return <Summary setStep={setStep} step={step} data={data} />;
       default:
         return <Step1 setStep={setStep} step={step} />;
     }

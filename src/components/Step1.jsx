@@ -59,7 +59,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
             <div className="flex justify-between items-center">
               <h6 className="text-marine-blue text-sm mb-1">Name</h6>
               {nameError && (
-                <p className="text-red-600 font-medium">{nameError}</p>
+                <p className="text-red-600 text-sm md:font-medium">{nameError}</p>
               )}
             </div>
             <input
@@ -74,7 +74,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
           <label>
             <div className="flex justify-between items-center">
               <h6 className="text-marine-blue text-sm mb-1">Email Address</h6>
-              {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+              {emailError && <p className="text-red-600 text-sm md:font-medium">{emailError}</p>}
             </div>
             <input
               type="email"
@@ -89,7 +89,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
             <div className="flex justify-between">
               <h6 className="text-marine-blue text-sm mb-1">Phone Number</h6>
               {phoneError && (
-                <p className="text-red-600 font-medium">{phoneError}</p>
+                <p className="text-red-600 text-sm md:font-medium">{phoneError}</p>
               )}
             </div>
             <input
@@ -106,7 +106,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
       <div className="flex w-full flex-col bg-lol-white lg:bg-none lg:p-0 p-5">
         <button
           type="button"
-          className="self-end px-8 py-3 bg-marine-blue text-lol-white rounded-lg"
+          className="self-end py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer"
           onClick={nextPage}
         >
           Next Step

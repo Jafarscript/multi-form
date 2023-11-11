@@ -83,7 +83,7 @@ const Step3 = ({ step, setStep }) => {
           Go Back
         </button>
         <button
-          className=" px-8 py-3 bg-marine-blue text-lol-white rounded-lg cursor-pointer"
+          className=" py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer"
           onClick={() => setStep(step + 1)}
           type='button'
         >
