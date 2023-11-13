@@ -1,15 +1,25 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 const Summary = ({ step, setStep, data }) => {
+  const [grandTotal, setGrandTotal] = useState(0);
 
-  const calculateTotal = () => {
-    const planPrice = data.prefer === "monthly" ? data.selected.monthly : data.selected.yearly;
-    const addonsTotal = data.selectedAddOns.reduce((total, addon) => total + addon.price, 0);
-    const grandTotal = planPrice + addonsTotal;
-    console.log(grandTotal)
-    return grandTotal
+ 
 
-  };
+  useEffect(() => {
+  // Function to calculate the total
+
+    const calculateTotal = () => {
+      const planPrice = data.prefer === "monthly" ? data.selected.monthly : data.selected.yearly;
+      const addonsTotal = data.selectedAddOns.reduce((total, addon) => total + addon.price, 0);
+      return planPrice + addonsTotal;
+    };
+
+    // Update grandTotal whenever data changes
+
+    setGrandTotal(calculateTotal());
+  }, [data, data.prefer, data.selectedAddOns]);
+
+  // console.log(grandTotal)
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
@@ -51,7 +61,7 @@ const Summary = ({ step, setStep, data }) => {
           </div>
           <div className="flex justify-between items-center p-5">
             <h3 className="text-sm text-cool-gray">Total (per month)</h3>
-            <p className="text-purplish-blue font-bold">+${calculateTotal()}</p>
+            <p className="text-purplish-blue font-bold">+${data.prefer === 'monthly' ? grandTotal + `${"/mo"}` : grandTotal +`${"/yr"}`}</p>
           </div>
         </section>
       </main>

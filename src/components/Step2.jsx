@@ -1,30 +1,20 @@
 import React, { useState } from "react";
 
 const Step2 = ({ setStep, step, data, setData }) => {
-  // const [change, setChange] = useState("monthly");
   const [planError, setPlanError] = useState("");
-
-  // useEffect(() => {
-  //   // Update the "prefer" field in the selected state based on the "change" value
-  //   setData((prevSelected) => ({
-  //     ...prevSelected,
-  //     prefer: change === "monthly" ? 'monthly' : 'yearly',
-  //   }));
-  // }, [change, setData]);
-
 
   const tooglePlan = () => {
     if (data.prefer === "monthly") {
-      setData({...data, prefer: 'yearly'})
+      setData({ ...data, prefer: "yearly" });
     } else {
-      setData({...data, prefer: 'monthly'})
+      setData({ ...data, prefer: "monthly" });
     }
   };
 
   const nextPage = () => {
-    if(!data.selected){
-      setPlanError('Please select a plan')
-    }else{
+    if (!data.selected) {
+      setPlanError("Please select a plan");
+    } else {
       setStep(step + 1);
     }
   };
@@ -54,7 +44,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
                 onClick={() =>
                   setData({
                     ...data,
-                    selected: plan
+                    selected: plan,
                   })
                 }
               >
