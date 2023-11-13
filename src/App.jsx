@@ -39,6 +39,7 @@ function App() {
     ],
     prefer: "monthly",
     selected: '',
+    selectedAddOns: [],
   });
   const [step, setStep] = useState(0);
   const conditionalComponent = () => {
@@ -52,7 +53,7 @@ function App() {
           <Step2 setStep={setStep} step={step} data={data} setData={setData} />
         );
       case 2:
-        return <Step3 setStep={setStep} step={step} />;
+        return <Step3 setStep={setStep} step={step} data={data} setData={setData}/>;
       case 3:
         return <Summary setStep={setStep} step={step} data={data} />;
       default:

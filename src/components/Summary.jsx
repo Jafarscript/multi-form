@@ -1,6 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Summary = ({ step, setStep, data }) => {
+
+  const calculateTotal = () => {
+    const planPrice = data.prefer === "monthly" ? data.selected.monthly : data.selected.yearly;
+    const addonsTotal = data.selectedAddOns.reduce((total, addon) => total + addon.price, 0);
+    const grandTotal = planPrice + addonsTotal;
+    console.log(grandTotal)
+    return grandTotal
+
+  };
+
   return (
     <div className="h-[100%] flex flex-col justify-between">
       <main className="bg-lol-white p-6 lg:p-0 rounded-xl lg:rounded-none translate-y-[-12%] sm:translate-y-[-20%] md:translate-y-[-35%] lg:translate-y-0 lg:pb-0 pb-10 lg:pt-0 pt-8 lg:m-0 m-5">
@@ -31,18 +41,17 @@ const Summary = ({ step, setStep, data }) => {
               </h4>
             </div>
             <hr />
-            <div className="flex justify-between items-center">
-              <h4 className="text-xs text-cool-gray">Online Service</h4>
-              <p className="text-sm">+$1/mo</p>
+
+            {data.selectedAddOns.map((addon) => (
+              <div className="flex justify-between items-center" key={addon.name}>
+              <h4 className="text-xs text-cool-gray">{addon.name}</h4>
+              <p className="text-sm">+${data.prefer === 'monthly' ? addon.price + `${"/mo"}` : addon.price + `${"/yr"}`}</p>
             </div>
-            <div className="flex justify-between items-center text-sm">
-              <h4 className="text-xs text-cool-gray">Larger Storage</h4>
-              <p className="text-sm">+$2/mo</p>
-            </div>
+            ))}
           </div>
           <div className="flex justify-between items-center p-5">
             <h3 className="text-sm text-cool-gray">Total (per month)</h3>
-            <p className="text-purplish-blue font-bold">+$12/mo</p>
+            <p className="text-purplish-blue font-bold">+${calculateTotal()}</p>
           </div>
         </section>
       </main>
@@ -55,7 +64,7 @@ const Summary = ({ step, setStep, data }) => {
           Go Back
         </button>
         <button
-          className=" py-3 px-5 md:px-8 md:py-3  text-lol-white rounded-md bg-purplish-bluecursor-pointer hover:opacity-70"
+          className=" py-3 px-5 md:px-8 md:py-3 bg-purplish-blue text-lol-white rounded-md bg-purplish-bluecursor-pointer hover:opacity-70"
           type="button"
         >
           Confirm

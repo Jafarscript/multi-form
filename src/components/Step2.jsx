@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Step2 = ({ setStep, step, data, setData }) => {
-  const [change, setChange] = useState("monthly");
+  // const [change, setChange] = useState("monthly");
   const [planError, setPlanError] = useState("");
 
-  useEffect(() => {
-    // Update the "prefer" field in the selected state based on the "change" value
-    setData((prevSelected) => ({
-      ...prevSelected,
-      prefer: change === "monthly" ? 'monthly' : 'yearly',
-    }));
-  }, [change, setData]);
+  // useEffect(() => {
+  //   // Update the "prefer" field in the selected state based on the "change" value
+  //   setData((prevSelected) => ({
+  //     ...prevSelected,
+  //     prefer: change === "monthly" ? 'monthly' : 'yearly',
+  //   }));
+  // }, [change, setData]);
 
 
   const tooglePlan = () => {
-    if (change === "monthly") {
-      setChange("yearly");
+    if (data.prefer === "monthly") {
+      setData({...data, prefer: 'yearly'})
     } else {
-      setChange("monthly");
+      setData({...data, prefer: 'monthly'})
     }
   };
 
@@ -29,7 +29,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
     }
   };
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
@@ -87,7 +87,7 @@ const Step2 = ({ setStep, step, data, setData }) => {
             Monthly
             <div
               className={`w-9 h-5 px-[2px] bg-marine-blue rounded-xl flex items-center cursor-pointer ${
-                change === "monthly" ? "only:justify-start" : "justify-end"
+                data.prefer === "monthly" ? "only:justify-start" : "justify-end"
               } transition-all`}
               onClick={() => tooglePlan()}
             >

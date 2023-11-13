@@ -1,35 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Step3 = ({ step, setStep }) => {
-  const [checkedItems, setCheckedItems] = useState({});
+const Step3 = ({ step, setStep, data, setData }) => {
+  // const [checkedItems, setCheckedItems] = useState([]);
   const addon =[
     {
       id: 0,
       name: "Online Service",
       detail: "Access to multiplayer games",
-      price: 1,
+      monthly: 1,
+      yearly: 10,
     },
     {
       id: 1,
       name: "Larger Storage",
       detail: "Extra 1TB of cloud save",
-      price: 2,
+      monthly: 2,
+      yearly: 20,
     },
     {
       id: 2,
       name: "Customizable profile",
       detail: "Custom theme on your profile",
-      price: 2,
+      monthly: 2,
+      yearly: 20,
     },
   ];
 
-  const handleCheckboxChange = (id) => {
-    setCheckedItems((prevCheckedItems) => ({
-      ...prevCheckedItems,
-      [id]: !prevCheckedItems[id] || false,
-    }));
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setData((prevData) => {
+      const addonToAdd = addon.find((addon) => addon.name === name);
+      const priceMultiplier = prevData.prefer === 'monthly' ? addonToAdd.monthly : addonToAdd.yearly;
+  
+      const selectedAddOns = checked
+        ? [...(prevData.selectedAddOns || []), { name, price: priceMultiplier }]
+        : (prevData.selectedAddOns || []).filter((addon) => addon.name !== name);
+  
+      return { ...prevData, selectedAddOns };
+    });
   };
-  // console.log(addon)
+  
+  console.log(data)
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
@@ -46,7 +57,7 @@ const Step3 = ({ step, setStep }) => {
               htmlFor={`checkbox_${add.id}`}
               key={add.id}
               className={`flex w-full justify-between items-center border-solid border px-5 py-4 rounded-lg peer-checked: ${
-                checkedItems[add.id]
+                Array.isArray(data.selectedAddons) && data.selectedAddons.some((selected) => selected.name === add.name)
                   ? "border-purplish-blue"
                   : "border-gray-300"
               }`}
@@ -55,9 +66,10 @@ const Step3 = ({ step, setStep }) => {
                 <input
                   type="checkbox"
                   id={`checkbox_${add.id}`}
+                  name={add.name}
                   className="accent-purplish-blue"
-                  onChange={() => handleCheckboxChange(add.id)}
-                  checked={checkedItems[add.id]}
+                  onChange={handleCheckboxChange}
+                  checked={Array.isArray(data.selectedAddOns) && data.selectedAddOns.some((selected) => selected.name === add.name)}
                 />
                 <div>
                   <h4 className="text-marine-blue text-sm font-medium">{add.name}</h4>
@@ -67,7 +79,7 @@ const Step3 = ({ step, setStep }) => {
                 </div>
               </div>
               <span className="text-purplish-blue text-sm">
-                +${add.price}/mo
+                +${data.prefer === 'monthly' ? add.monthly + `${"/mo"}` : add.yearly + `${"/yr"}`}
               </span>
             </label>
           ))}

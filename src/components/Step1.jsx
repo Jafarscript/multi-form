@@ -64,6 +64,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
             </div>
             <input
               type="text"
+              value={data.name}
               placeholder="e.g.Taoheed Bald"
               className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${
                 nameError && "border-red-600"
@@ -78,6 +79,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
             </div>
             <input
               type="email"
+              value={data.email}
               placeholder="e.g.taoheedisbald@baldee.com"
               className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${
                 emailError && "border-red-600"
@@ -94,6 +96,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
             </div>
             <input
               type="tel"
+              value={data.phone}
               placeholder="e.g+ 1 234 4567 890"
               className={`border-cool-gray border-solid w-full p-3 border rounded-lg focus:outline-none focus:border-purplish-blue ${
                 phoneError && "border-red-600"
