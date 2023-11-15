@@ -56,7 +56,7 @@ const Sidebar = ({ step }) => {
         <li className="flex gap-5 items-center">
           <span
             className={`border rounded-[50%] border-solid border-white py-1 px-3 ${
-              step === 3 ? "bg-light-blue text-black" : ""
+              step === 3 || step === 4? "bg-light-blue text-black" : ""
             }`}
           >
             4

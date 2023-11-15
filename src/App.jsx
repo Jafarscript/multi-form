@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
+import Final from "./components/Final";
 import Summary from "./components/Summary";
 import arcade from "./assets/images/icon-arcade.svg";
 import advanced from "./assets/images/icon-advanced.svg";
@@ -56,6 +57,8 @@ function App() {
         return <Step3 setStep={setStep} step={step} data={data} setData={setData}/>;
       case 3:
         return <Summary setStep={setStep} step={step} data={data} />;
+      case 4:
+        return <Final />;
       default:
         return <Step1 setStep={setStep} step={step} />;
     }
@@ -64,7 +67,7 @@ function App() {
     <div className="App bg-magnolia lg:flex lg:justify-center lg:items-center min-h-[100vh] font-[Ubuntu]">
       <section className="lg:p-5 lg:pr-20 gap-0 lg:gap-20 lg:bg-lol-white lg:rounded-xl lg:flex lg:flex-row  h-full lg:min-h-[80vh]  lg:h-full">
         <Sidebar step={step} />
-        <form className=" lg:pt-10 lg:h-auto lg:min-w-[56vh]">
+        <form className=" lg:pt-10 lg:h-auto lg:min-w-[57vh] lg:max-w-[57vh]">
           {conditionalComponent()}
         </form>
       </section>

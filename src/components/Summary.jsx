@@ -76,6 +76,7 @@ const Summary = ({ step, setStep, data }) => {
         <button
           className=" py-3 px-5 md:px-8 md:py-3 bg-purplish-blue text-lol-white rounded-md bg-purplish-bluecursor-pointer hover:opacity-70"
           type="button"
+          onClick={() => setStep(step + 1)}
         >
           Confirm
         </button>
