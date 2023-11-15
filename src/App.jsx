@@ -64,8 +64,8 @@ function App() {
     }
   };
   return (
-    <div className="App bg-magnolia lg:flex lg:justify-center lg:items-center min-h-[100vh] font-[Ubuntu]">
-      <section className="lg:p-5 lg:pr-20 gap-0 lg:gap-20 lg:bg-lol-white lg:rounded-xl lg:flex lg:flex-row  h-full lg:min-h-[80vh]  lg:h-full">
+    <div className="App bg-magnolia lg:flex lg:justify-center lg:items-center min-h-[100vh] font-[Ubuntu] ">
+      <section className="lg:p-5 lg:pr-20 gap-0 lg:gap-20 lg:bg-lol-white lg:rounded-xl lg:flex lg:flex-row  h-full lg:min-h-[80vh]  lg:h-full shadow-xl">
         <Sidebar step={step} />
         <form className=" lg:pt-10 lg:h-auto lg:min-w-[57vh] lg:max-w-[57vh]">
           {conditionalComponent()}

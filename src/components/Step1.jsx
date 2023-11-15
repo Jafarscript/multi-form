@@ -109,7 +109,7 @@ const Step1 = ({ step, setStep, data, setData }) => {
       <div className="flex w-full flex-col bg-lol-white lg:bg-none lg:p-0 p-5">
         <button
           type="button"
-          className="self-end py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer"
+          className="self-end py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer hover:opacity-80"
           onClick={nextPage}
         >
           Next Step
