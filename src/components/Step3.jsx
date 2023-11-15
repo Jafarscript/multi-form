@@ -2,7 +2,7 @@ import React from "react";
 
 const Step3 = ({ step, setStep, data, setData }) => {
   // const [checkedItems, setCheckedItems] = useState([]);
-  const addon = [
+  const addon =[
     {
       id: 0,
       name: "Online Service",
@@ -27,26 +27,17 @@ const Step3 = ({ step, setStep, data, setData }) => {
   ];
 
   const handleCheckboxChange = (e) => {
-    const { name, monthly, yearly, checked } = e.target;
+    const { name,   checked } = e.target;
     setData((prevData) => {
       const addonToAdd = addon.find((addon) => addon.name === name);
-      const priceMultiplier =
-        prevData.prefer === "monthly" ? addonToAdd.monthly : addonToAdd.yearly;
-
       const selectedAddOns = checked
-        ? [
-            ...(prevData.selectedAddOns || []),
-            { name, price: priceMultiplier, monthly, yearly },
-          ]
-        : (prevData.selectedAddOns || []).filter(
-            (addon) => addon.name !== name
-          );
-
+        ? [...(prevData.selectedAddOns || []), { name, monthly: addonToAdd.monthly, yearly : addonToAdd.yearly}]
+        : (prevData.selectedAddOns || []).filter((addon) => addon.name !== name);
+  
       return { ...prevData, selectedAddOns };
     });
   };
 
-  console.log(data);
 
   return (
     <div className="h-[100%] flex flex-col justify-between">
@@ -63,10 +54,7 @@ const Step3 = ({ step, setStep, data, setData }) => {
               htmlFor={`checkbox_${add.id}`}
               key={add.id}
               className={`flex w-full justify-between items-center border-solid border px-5 py-4 rounded-lg peer-checked: ${
-                Array.isArray(data.selectedAddons) &&
-                data.selectedAddons.some(
-                  (selected) => selected.name === add.name
-                )
+                Array.isArray(data.selectedAddons) && data.selectedAddons.some((selected) => selected.name === add.name)
                   ? "border-purplish-blue"
                   : "border-gray-300"
               }`}
@@ -78,27 +66,17 @@ const Step3 = ({ step, setStep, data, setData }) => {
                   name={add.name}
                   className="accent-purplish-blue"
                   onChange={handleCheckboxChange}
-                  checked={
-                    Array.isArray(data.selectedAddOns) &&
-                    data.selectedAddOns.some(
-                      (selected) => selected.name === add.name
-                    )
-                  }
+                  checked={Array.isArray(data.selectedAddOns) && data.selectedAddOns.some((selected) => selected.name === add.name)}
                 />
                 <div>
-                  <h4 className="text-marine-blue text-sm font-medium">
-                    {add.name}
-                  </h4>
+                  <h4 className="text-marine-blue text-sm font-medium">{add.name}</h4>
                   <h6 className="text-cool-gray font-thin text-[12.5px]">
                     {add.detail}
                   </h6>
                 </div>
               </div>
               <span className="text-purplish-blue text-sm">
-                +$
-                {data.prefer === "monthly"
-                  ? add.monthly + `${"/mo"}`
-                  : add.yearly + `${"/yr"}`}
+                +${data.prefer === 'monthly' ? add.monthly + `${"/mo"}` : add.yearly + `${"/yr"}`}
               </span>
             </label>
           ))}
@@ -109,14 +87,14 @@ const Step3 = ({ step, setStep, data, setData }) => {
         <button
           className="text-cool-gray hover:text-marine-blue cursor-pointer"
           onClick={() => setStep(step - 1)}
-          type="button"
+          type='button'
         >
           Go Back
         </button>
         <button
           className=" py-3 px-5 md:px-8 md:py-3 bg-marine-blue text-lol-white rounded-md cursor-pointer"
           onClick={() => setStep(step + 1)}
-          type="button"
+          type='button'
         >
           Next Step
         </button>

@@ -10,7 +10,7 @@ const Summary = ({ step, setStep, data }) => {
 
     const calculateTotal = () => {
       const planPrice = data.prefer === "monthly" ? data.selected.monthly : data.selected.yearly;
-      const addonsTotal = data.selectedAddOns.reduce((total, addon) => total + addon.price, 0);
+      const addonsTotal = data.selectedAddOns.reduce((total, addon) => data.prefer === 'monthly' ? total + addon.monthly : total + addon.yearly, 0);
       return planPrice + addonsTotal;
     };
 
@@ -55,7 +55,7 @@ const Summary = ({ step, setStep, data }) => {
             {data.selectedAddOns.map((addon) => (
               <div className="flex justify-between items-center" key={addon.name}>
               <h4 className="text-xs text-cool-gray">{addon.name}</h4>
-              <p className="text-sm">+${data.prefer === 'monthly' ? addon.price + `${"/mo"}` : addon.price + `${"/yr"}`}</p>
+              <p className="text-sm">+${data.prefer === 'monthly' ? addon.monthly + `${"/mo"}` : addon.yearly + `${"/yr"}`}</p>
             </div>
             ))}
           </div>
